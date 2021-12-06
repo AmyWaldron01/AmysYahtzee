@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AmysYahtzee.MainPage">
+
+    <!--  main content stack layout  -->
+    <Frame BackgroundColor="Gray" Padding="0,0,0,0" BorderColor="Black" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" Margin="2,2,0,2" WidthRequest="600">
+        <StackLayout  HorizontalOptions="Center" Margin="0,5,0,0">
+
+
+            <!-- Outside the Frame  -->
+            <!-- stacklayout for Restart Game  -->
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="20" Text="  Yahtzee" Margin="0,0,0,3" HorizontalOptions="StartAndExpand"/>
+                <Button Text="Restart Game " HorizontalOptions="StartAndExpand" Clicked="BtnRestartGame_clicked"/>
+            </StackLayout>
+
+
+            <Label Text="  Upper Section                     How To Score                 1#" FontSize="15" VerticalOptions="Start" FontAttributes="Bold" />
+
+            <Frame BackgroundColor="Black" Padding="0,0,0,0" BorderColor="Black" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" Margin="2,2,0,2" HeightRequest="500" WidthRequest="400">
+
+                <!--  Grid for the game board  -->
+                <Grid HeightRequest="400" WidthRequest="400" VerticalOptions="Center" BackgroundColor="LightPink" HorizontalOptions="Center">
+
+                    <!-- Rows 9 -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <!-- columns 2 -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Ones -->
+
+                    <ImageButton x:Name="BtnOnes"  StyleId="1" Source="aces.png" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Clicked="BtnNumberScores_Clicked" />
+                    <Image Source="addAces.png" Grid.Row="0" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl1"  BackgroundColor="LightSteelBlue" Grid.Row="0" Grid.Column="2" />
+
+                    <!-- Twos -->
+
+                    <ImageButton x:Name="BtnTwos"  StyleId="2" Source="twos.png" Grid.Row="1" Grid.Column="0" BackgroundColor="White" Clicked="BtnNumberScores_Clicked" />
+                    <Image Source="addTwos.png" Grid.Row="1" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl2" BackgroundColor="LightSteelBlue" Grid.Row="1" Grid.Column="2" />
+
+                    <!-- Threes -->
+                    <ImageButton x:Name="BtnThrees"  StyleId="3" Source="threes.png" BackgroundColor="white" Grid.Row="2" Grid.Column="0" Clicked="BtnNumberScores_Clicked"/>
+                    <Image Source="addThrees.png" Grid.Row="2" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl3" BackgroundColor="LightSteelBlue" Grid.Row="2" Grid.Column="2" />
+
+                    <!-- Fours -->
+                    <ImageButton x:Name="BtnFours"  StyleId="4" Source="fours.png" BackgroundColor="white" Grid.Row="3" Grid.Column="0" Clicked="BtnNumberScores_Clicked"/>
+                    <Image Source="addFours.png" Grid.Row="3" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl4" BackgroundColor="LightSteelBlue" Grid.Row="3" Grid.Column="2" />
+
+                    <!-- Fives -->
+                    <ImageButton x:Name="BtnFives"  StyleId="5" Source="fives.png" BackgroundColor="white" Grid.Row="4" Grid.Column="0" Clicked="BtnNumberScores_Clicked" />
+                    <Image Source="addFives.png" Grid.Row="4" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl5" BackgroundColor="LightSteelBlue" Grid.Row="4" Grid.Column="2" />
+
+                    <!-- Sixs -->
+                    <ImageButton x:Name="BtnSixes"  StyleId="6" Source="sixes.png" BackgroundColor="white" Grid.Row="5" Grid.Column="0" Clicked="BtnNumberScores_Clicked" />
+                    <Image Source="addSixes.png" Grid.Row="5" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="Lbl6" BackgroundColor="LightSteelBlue" Grid.Row="5" Grid.Column="2" />
+
+                    <!-- Grid for top Total -->
+
+                    <Grid Grid.Row="6" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Cornsilk">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--Top Total -->
+                        <Image Source="TotalScore.png" BackgroundColor="White" Grid.Column="0" Grid.Row="0"  />
+                        <Image Source="Arrow.png" Grid.Row="0" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="LblUpperBaseScore" BackgroundColor="LightSteelBlue" Grid.Row="0" Grid.Column="2" />
+
+
+                        <Image Source="Bonus.png" BackgroundColor="White" Grid.Column="0" Grid.Row="1" />
+                        <Image Source="Score35.png" Grid.Row="1" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="bonusLbl" BackgroundColor="LightSteelBlue" Grid.Row="1" Grid.Column="2" />
+
+                        <Image Source="Total.png" BackgroundColor="White" Grid.Column="0" Grid.Row="2" />
+                        <Image Source="Arrow.png" Grid.Row="2" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="LblTotalUp"  BackgroundColor="LightSteelBlue" Grid.Row="2" Grid.Column="2" />
+                        <!-- idkkkkkk-->
+
+                    </Grid>
+
+                </Grid>
+                <!-- End of big Grid-->
+
+            </Frame>
+
+            <!-- Start of lower Section -->
+            <Label Text="  Lower Section                     How To Score       " FontSize="15" VerticalOptions="Start" FontAttributes="Bold" />
+            <Frame BackgroundColor="Black" Padding="0,0,0,0" BorderColor="Black" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" Margin="2,2,0,2"  WidthRequest="400">
+
+                <!--  Grid for the game board  -->
+                <Grid WidthRequest="400" VerticalOptions="Center" BackgroundColor="LightPink" HorizontalOptions="Center">
+
+                    <!-- Rows 8 -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- columns 2 -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 3 of a kind -->
+
+                    <ImageButton x:Name="threeOfAKindBtn" StyleId="7" Source="ThreeOfAKind.png" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Clicked="threeOfAKindBtn_Clicked"/>
+                    <Image Source="TotalDice.png" Grid.Row="0" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblBtn3OfKind" BackgroundColor="LightSteelBlue" Grid.Row="0" Grid.Column="2" />
+                    <!-- REPLACE WITH LABELS-->
+
+
+                    <!-- 4 of a kind -->
+
+                    <ImageButton x:Name="fourOfAKindBtn" StyleId="8" Source="FourOfAKind.png" Grid.Row="1" Grid.Column="0" BackgroundColor="White" Clicked="fourOfAKindBtn_Clicked"/>
+                    <Image Source="TotalDice.png" Grid.Row="1" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblBtn4OfAKind" BackgroundColor="LightSteelBlue" Grid.Row="1" Grid.Column="2" />
+
+                    <!-- Full House -->
+                    <ImageButton x:Name="fullHouseBtn" StyleId="9" Source="FullHouse.png" BackgroundColor="white" Grid.Row="2" Grid.Column="0" Clicked="fullHouseBtn_Clicked" />
+                    <Image Source="Scoretwentyfive.png" Grid.Row="2" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblFullHouse" BackgroundColor="LightSteelBlue" Grid.Row="2" Grid.Column="2" />
+
+                    <!-- Small striaght-->
+                    <ImageButton x:Name="smallBtn" StyleId="10" Source="Sm.png" BackgroundColor="white" Grid.Row="3" Grid.Column="0" Clicked="smallBtn_Clicked"/>
+                    <Image Source="ScoreThirty.png" Grid.Row="3" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblSmall" BackgroundColor="LightSteelBlue" Grid.Row="3" Grid.Column="2" />
+
+                    <!-- Long Straight -->
+                    <ImageButton x:Name="longBtn" StyleId="11" Source="Lg.png" BackgroundColor="white" Grid.Row="4" Grid.Column="0" Clicked="longBtn_Clicked"/>
+                    <Image Source="ScoreFourty.png" Grid.Row="4" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblLong" BackgroundColor="LightSteelBlue" Grid.Row="4" Grid.Column="2" />
+
+                    <!-- Yahtzee -->
+                    <ImageButton x:Name="YahtzeeBtn" StyleId="12" Source="Yah.png"  BackgroundColor="white" Grid.Row="5" Grid.Column="0" Clicked="YahtzeeBtn_Clicked"/>
+                    <Image Source="ScoreFivty.png" Grid.Row="5" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblYahtzee" BackgroundColor="LightSteelBlue" Grid.Row="5" Grid.Column="2" />
+
+                    <!-- Chance -->
+                    <ImageButton x:Name="ChanceBtn" StyleId="13" Source="Chance.png"  BackgroundColor="white" Grid.Row="6" Grid.Column="0" Clicked="ChanceBtn_Clicked" />
+                    <Image Source="ScoreFiveDice.png" Grid.Row="6" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblChance" BackgroundColor="LightSteelBlue" Grid.Row="6" Grid.Column="2" />
+
+                    <!-- Yazhtzee Bonus -->
+                    <Image Source="YahBonus.png" BackgroundColor="white" Grid.Row="7" Grid.Column="0" />
+                    <Image Source="ForEach.png" Grid.Row="7" Grid.Column="1" BackgroundColor="White" />
+                    <Label x:Name="LblYahBonus" BackgroundColor="LightSteelBlue" Grid.Row="7" Grid.Column="2" />
+
+
+
+                    <!-- Grid for Bottom Total -->
+
+                    <Grid Grid.Row="8" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Cornsilk">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--Bottom Total -->
+                        <Image Source="TotalOfUpper.png" BackgroundColor="White" Grid.Column="0" Grid.Row="0" />
+                        <Image Source="Arrow.png" Grid.Row="0" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="LblTotalUp2" BackgroundColor="LightSteelBlue" Grid.Row="0" Grid.Column="2" />
+
+                        <Image Source="TotalLow.png" BackgroundColor="White" Grid.Column="0" Grid.Row="1" />
+                        <Image Source="Arrow.png" Grid.Row="1" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="LblBottomBaseScore" BackgroundColor="LightSteelBlue" Grid.Row="1" Grid.Column="2" />
+
+                        <Image Source="GrandTotal.png" BackgroundColor="White" Grid.Column="0" Grid.Row="2" />
+                        <Image Source="Arrow.png" Grid.Row="2" Grid.Column="1" BackgroundColor="White" />
+                        <Label x:Name="LblGrandTotal" BackgroundColor="LightSteelBlue" Grid.Row="2" Grid.Column="2" />
+
+                    </Grid>
+
+                </Grid>
+                <!-- End of big Grid-->
+
+            </Frame>
+
+
+            <!-- Dice -->
+            <Button x:Name="BtnDiceRoll" Text="Roll The Dice"  Clicked="BtnDiceRoll_Clicked" />
+            <Label x:Name="LblFeedback" Text="" FontSize="Small" HorizontalOptions="Center"/>
+
+            <Grid HeightRequest="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnDice1" HeightRequest="60" WidthRequest="60" Grid.Column="0" BackgroundColor="LightGray"  StyleId="Roll" Clicked="BtnSetRollStatus_Clicked"/>
+                <Button x:Name="BtnDice2" HeightRequest="60" WidthRequest="60" Grid.Column="1" BackgroundColor="LightGray"  StyleId="Roll" Clicked="BtnSetRollStatus_Clicked"/>
+                <Button x:Name="BtnDice3" HeightRequest="60" WidthRequest="60" Grid.Column="2" BackgroundColor="LightGray"  StyleId="Roll" Clicked="BtnSetRollStatus_Clicked"/>
+                <Button x:Name="BtnDice4" HeightRequest="60" WidthRequest="60" Grid.Column="3" BackgroundColor="LightGray"  StyleId="Roll" Clicked="BtnSetRollStatus_Clicked"/>
+                <Button x:Name="BtnDice5" HeightRequest="60" WidthRequest="60" Grid.Column="4" BackgroundColor="LightGray"  StyleId="Roll" Clicked="BtnSetRollStatus_Clicked"/>
+            </Grid>
+
+        </StackLayout>
+    </Frame>
+</ContentPage>
+ 
